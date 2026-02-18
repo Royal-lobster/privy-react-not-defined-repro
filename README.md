@@ -60,10 +60,3 @@ The page should render without errors. Since Next.js 16 and React 19 use the new
 - Under **npm** (flat `node_modules`), `React` is hoisted to the top level and accessible as an implicit global
 - Under **pnpm** (strict, symlinked `node_modules`), `styled-components` cannot resolve `React` because it's not in its own dependency tree — `react` is a peer dependency that must be properly resolved
 
-## Workaround
-
-Adding `import React from "react"` in the consuming file does **not** help since the error originates from within the Privy package's own module evaluation.
-
-Potential workarounds (untested):
-- Use `shamefully-hoist=true` in `.npmrc` (defeats the purpose of pnpm)
-- Add `react` to `pnpm.overrides` or `public-hoist-pattern`
